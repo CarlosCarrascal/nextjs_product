@@ -7,6 +7,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const stockNum = Number(product.stock);
+  
   return (
     <Link href={`/products/${product.id}`} className="group">
       <article className="relative bg-white rounded-2xl border-2 border-violet-200 hover:border-violet-400 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/20 hover:-translate-y-1 h-full flex flex-col">
@@ -22,14 +24,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Stock Badge */}
           <div className="absolute top-3 right-3">
             <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm ${
-              product.stock > 0 
+              stockNum > 0 
                 ? 'bg-emerald-500/90 text-white' 
                 : 'bg-red-500/90 text-white'
             }`}>
               <span className={`w-1.5 h-1.5 rounded-full ${
-                product.stock > 0 ? 'bg-white' : 'bg-white/80'
+                stockNum > 0 ? 'bg-white' : 'bg-white/80'
               }`}></span>
-              {product.stock > 0 ? `${product.stock} disponibles` : 'Agotado'}
+              {stockNum > 0 ? `${product.stock} disponibles` : 'Agotado'}
             </span>
           </div>
         </div>
